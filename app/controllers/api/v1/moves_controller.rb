@@ -9,7 +9,7 @@ module Api
       end
 
       def show
-        index = params[:id]
+        index = params[:id] -1
         score = $redis.zrange("rank", index, index)
         render json: {status: 'SUCCESS', message: 'Score', data: score}, status: :ok
       end
