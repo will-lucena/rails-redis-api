@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_162744) do
+ActiveRecord::Schema.define(version: 2019_08_30_184351) do
 
-  create_table "players", force: :cascade do |t|
-    t.string "name"
+  create_table "moves", force: :cascade do |t|
+    t.string "player_name"
     t.float "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
