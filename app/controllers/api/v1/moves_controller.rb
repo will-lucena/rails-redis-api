@@ -4,13 +4,13 @@ module Api
       $redis = Redis.new(host: "localhost")
 
       def index
-        moves = $redis.zrange("rank", 0, 10).to_json
+        moves = $redis.zrange("rank", 0, 10)
         render json: {status: 'SUCCESS', message: 'Rank', data: moves}, status: :ok
       end
 
       def show
         index = params[:id]
-        score = $redis.zrange("rank", index, index).to_json
+        score = $redis.zrange("rank", index, index)
         render json: {status: 'SUCCESS', message: 'Score', data: score}, status: :ok
       end
 
