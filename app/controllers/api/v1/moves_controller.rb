@@ -15,14 +15,13 @@ module Api
       end
 
       def create
+        puts("porra borracha")
         move = Move.new(move_params)
         result = $redis.zincrby("rank", move.score, move.player_name)
-        #$redis.set(move.player_name, move.score)
-        #result = $redis.get(move.player_name)
         if result
-					render json: {status: 'SUCCESS', message: 'Saved article', data: result},status: :ok
+					render json: {status: 'SUCCESS', message: 'Score updated', data: result},status: :ok
 				else
-					render json: {status: 'ERROR', message: 'Articles not saved', data: result.erros},status: :unprocessable_entity
+					render json: {status: 'ERROR', message: 'Fail on update the score', data: result.erros},status: :unprocessable_entity
 				end
       end
       
